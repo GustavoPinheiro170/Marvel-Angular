@@ -1,0 +1,11 @@
+<mat-card
+  *ngFor="let character of $characters | async; trackBy: trackByCards"
+  class="container-cards"
+>
+  <app-drawer-cards [character]="character"></app-drawer-cards>
+
+  <div class="card-characters">
+    <img mat-card-avatar [src]="character.thumbnail?.urlImage" />
+    <mat-card-title>{{ character.name }}</mat-card-title>
+  </div>
+</mat-card>

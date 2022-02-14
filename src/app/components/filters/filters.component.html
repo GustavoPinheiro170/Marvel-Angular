@@ -1,0 +1,24 @@
+<div class="filter">
+  <img src="../../../assets/filter.svg" width="55px" height="20px" />
+  <mat-form-field appearance="fill" class="options">
+    <mat-label>Order</mat-label>
+    <mat-select
+      (ngModelChange)="orderByCharacters($event)"
+      [formControl]="selected"
+    >
+      <mat-option value="name">A - Z</mat-option>
+      <mat-option value="-name">Z - A</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="input-filter" appearance="fill">
+    <mat-label>Characters</mat-label>
+    <input
+      matInput
+      placeholder="Ex Hulk"
+      type="text"
+      [formControl]="filter"
+      (ngModelChange)="filterCharacters(filter.value)"
+    />
+  </mat-form-field>
+</div>

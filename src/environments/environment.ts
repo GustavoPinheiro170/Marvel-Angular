@@ -2,8 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { EnvType } from "src/assets/enums/envtype.enum";
+
 export const environment = {
-  production: false
+  production: false,
+  stage: EnvType.local,
+  publicKey: 'b9ee71c05f4755923f567079687a48cc',
+  privateKey : '95ebdba2a8940d0287e7176e37afd33357bcc705'
 };
 
 /*

@@ -1,0 +1,29 @@
+.filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-around;
+  padding: 10px;
+  margin-top: 5%;
+
+  .input-filter {
+    width: 320px;
+  }
+  ::ng-deep input.mat-input-element {
+    color: #484a4c;
+  }
+
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #da1212 !important;
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #ca1212 !important;
+  }
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(255 255 255 / 4%);
+  }
+}

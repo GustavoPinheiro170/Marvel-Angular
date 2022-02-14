@@ -1,0 +1,57 @@
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  .close-details {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: -40px;
+    z-index: 999;
+  }
+  ::ng-deep {
+    .mat-button .mat-button-wrapper > *,
+    .mat-flat-button .mat-button-wrapper > *,
+    .mat-stroked-button .mat-button-wrapper > *,
+    .mat-raised-button .mat-button-wrapper > *,
+    .mat-icon-button .mat-button-wrapper > *,
+    .mat-fab .mat-button-wrapper > *,
+    .mat-mini-fab .mat-button-wrapper > * {
+      vertical-align: middle;
+      color: red;
+    }
+    .mat-spinner {
+      position: absolute;
+    }
+    .mat-body p,
+    .mat-body-1 p,
+    .mat-typography p {
+      margin: 0 0 12px;
+      padding: 15px;
+    }
+  }
+  .comics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+  }
+  img {
+    padding: 10px;
+  }
+  .urls {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+  }
+  .description {
+    max-width: 400px;
+    margin-bottom: 15px;
+  }
+}

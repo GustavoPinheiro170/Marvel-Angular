@@ -1,0 +1,24 @@
+<ng-container class="sidenav" #cardContent autosize>
+  <div class="sidenav" mode="side" *ngIf="toggleDrawers(character.id)">
+    <h3 class="title-name">{{ character?.name }}</h3>
+    <div mat-dialog-content class="description">
+      <p>{{ character?.description }}</p>
+    </div>
+
+    <div class="urls">
+      <ng-container *ngFor="let url of character.urls; trackBy: trackByCards">
+        <a mat-button [href]="url.url" target="_blank">{{
+          capitalize(url.type)
+        }}</a>
+      </ng-container>
+      <button mat-button (click)="openDialog(character)">
+        <mat-icon>bookmark</mat-icon>
+        Comics</button>
+    </div>
+  </div>
+  <div class="sidenav-content">
+    <button type="button" mat-button (click)="togglePropertyDrawer(character.id)">
+      <mat-icon aria-hidden="false" aria-label="info">info</mat-icon>
+    </button>
+  </div>
+</ng-container>
