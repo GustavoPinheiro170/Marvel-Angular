@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { map, first, finalize } from 'rxjs/operators';
 import { Paginator } from 'src/app/models/dto/paginator.model';
 import { ParameterResponse } from 'src/app/models/dto/parameters.model';
 import { CharacterModel } from 'src/app/models/dto/character.model';
@@ -8,8 +10,6 @@ import { CountPages } from 'src/assets/helpers/count-pages.helper';
 import { CoreService } from 'src/app/services/core.service';
 import { GetFilterCharacterService } from 'src/app/services/characters/get-filter-character.service';
 import { LoadingControlService } from 'src/app/services/utils/loading-control.service';
-import { Observable, Subscription } from 'rxjs';
-import { map, first, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-container',
@@ -35,9 +35,9 @@ export class ContainerComponent implements OnInit {
   parameterResponse: ParameterResponse = new ParameterResponse();
 
   ngOnInit(): void {
+    this.awaitLoading();
     this.getInitialCharacters();
     this.getParametersResponse();
-    this.awaitLoading();
   }
 
   awaitLoading(): Subscription {
