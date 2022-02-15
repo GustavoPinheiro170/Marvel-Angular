@@ -7,6 +7,9 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
+import { CharacterModel } from 'src/app/models/dto/character.model';
+import { GetIdCharacterService } from 'src/app/services/characters/get-id-character.service';
 import { DetailsComicsComponent } from './details-comics.component';
 
 describe('DetailsComicsComponent', () => {
@@ -17,10 +20,17 @@ describe('DetailsComicsComponent', () => {
     SupportingText: 'Are you sure?',
   };
 
+  let getCharacterIdStub: jasmine.SpyObj<GetIdCharacterService>;
+
+  const fakeMarvelResponseData: CharacterModel[] = [new CharacterModel()];
+
   beforeEach(async () => {
+
+    getCharacterIdStub = jasmine.createSpyObj('GetIdCharacterService', {}, { getIdCharacter: () => of(fakeMarvelResponseData)});
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, MatSnackBarModule, MatDialogModule],
       providers: [
+        { provide : GetIdCharacterService, useValeu: getCharacterIdStub},
         { provide: MatDialogRef, useValue: { close: () => {} } },
         {
           provide: MAT_DIALOG_DATA,
@@ -39,6 +49,9 @@ describe('DetailsComicsComponent', () => {
   });
 
   it('should create', () => {
+    spyOn(getCharacterIdStub, 'getIdCharacter').and.returnValue(of(fakeMarvelResponseData))
+    component.ngOnInit()
+    expect(component.comicDetails).toBeDefined()
     expect(component).toBeTruthy();
   });
 

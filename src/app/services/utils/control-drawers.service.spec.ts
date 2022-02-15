@@ -16,5 +16,16 @@ describe('ControlDrawersService', () => {
 
   it('expected call toggleIdOpened', () => {
     service.toggleIdOpened(120);
+    expect(service.othersIdsOpened).toEqual([120])
+  });
+
+  it('expected call toggleIdOpened two ids', () => {
+    service.othersIdsOpened = [120]
+    service.toggleIdOpened(10);
+    expect(service.othersIdsOpened).toEqual([10])
+  });
+
+  it('expected call awaitIdOpened', () => {
+    expect( service.awaitIdOpened()).toBeDefined()
   });
 });

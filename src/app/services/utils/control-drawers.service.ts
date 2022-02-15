@@ -7,13 +7,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ControlDrawersService {
   constructor() {}
 
-  private _othersIdsOpened: Array<number> = [];
+  othersIdsOpened: Array<number> = [];
   private _$idOpened: BehaviorSubject<Array<number>> = new BehaviorSubject([1]);
 
   toggleIdOpened(id: number) {
-    if (this._othersIdsOpened.includes(id)) {
+    if (this.othersIdsOpened.includes(id)) {
       return this.isSameId();
-    } else if (!this._othersIdsOpened.length) {
+    } else if (!this.othersIdsOpened.length) {
       return this.addIdOpened(id);
     } else {
       return this.deleteOtherOpened(id);
@@ -21,21 +21,21 @@ export class ControlDrawersService {
   }
 
   private isSameId() {
-    this._othersIdsOpened.splice(-this._othersIdsOpened.length);
-    this._$idOpened.next(this._othersIdsOpened);
+    this.othersIdsOpened.splice(-this.othersIdsOpened.length);
+    this._$idOpened.next(this.othersIdsOpened);
   }
 
   private addIdOpened(id: number) {
-    this._othersIdsOpened.push(id);
-    this._$idOpened.next(this._othersIdsOpened);
+    this.othersIdsOpened.push(id);
+    this._$idOpened.next(this.othersIdsOpened);
   }
 
   private deleteOtherOpened(id: number) {
-    if (!this._othersIdsOpened.includes(id)) {
-      this._othersIdsOpened.splice(-this._othersIdsOpened.length);
-      this._othersIdsOpened.push(id);
+    if (!this.othersIdsOpened.includes(id)) {
+      this.othersIdsOpened.splice(-this.othersIdsOpened.length);
+      this.othersIdsOpened.push(id);
     }
-    this._$idOpened.next(this._othersIdsOpened);
+    this._$idOpened.next(this.othersIdsOpened);
   }
 
   public awaitIdOpened() : Observable<Array<number>> {
