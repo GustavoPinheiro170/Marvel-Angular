@@ -7,9 +7,10 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MD5 } from 'crypto-js';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { environment } from '../environments/environment';
+import { LoadingControlService } from './services/utils/loading-control.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     this._ts + environment.privateKey + environment.publicKey
   ).toString();
 
+  constructor(){}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
