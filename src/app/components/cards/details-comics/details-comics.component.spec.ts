@@ -49,7 +49,7 @@ describe('DetailsComicsComponent', () => {
   });
 
   it('should create', () => {
-    spyOn(getCharacterIdStub, 'getIdCharacter').and.returnValue(of(fakeMarvelResponseData))
+    spyOn(getCharacterIdStub, 'getIdCharacter').and.returnValue(of(fakeMarvelResponseData));
     component.ngOnInit()
     expect(component.comicDetails).toBeDefined()
     expect(component).toBeTruthy();

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CharacterModel } from 'src/app/models/dto/character.model';
 
 import { CardsComponent } from './cards.component';
 
@@ -21,5 +22,9 @@ describe('CardsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should trackByCards', () => {
+    expect(component.trackByCards(0, new CharacterModel())).toEqual(new CharacterModel());
   });
 });
