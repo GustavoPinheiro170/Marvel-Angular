@@ -1,9 +1,12 @@
 <ng-container class="sidenav" #cardContent autosize>
   <div class="sidenav" mode="side" *ngIf="toggleDrawers(character?.id)">
     <h3 class="title-name">{{ character?.name }}</h3>
-    <div mat-dialog-content class="description">
-      <p>{{ character?.description }}</p>
+    <div mat-dialog-content class="description" *ngIf="character.description; else nodescription">
+      <p #description>{{ character?.description}}</p>
     </div>
+    <ng-template #nodescription>
+      <h3>There is no description</h3>
+    </ng-template>
     <div class="urls">
       <ng-container *ngFor="let url of character.urls; trackBy: trackByCards">
         <a mat-button [href]="url.url" target="_blank">{{
