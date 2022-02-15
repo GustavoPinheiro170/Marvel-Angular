@@ -1,8 +1,8 @@
 <div class="details">
   <app-empty *ngIf="emptyDetails"></app-empty>
-  <mat-card *ngFor="let comics of comicDetails | async" class="comics">
+  <mat-card  *ngFor="let comics of comicDetails | async" class="comics">
     <mat-spinner *ngIf="setSpinner" color="accent"> </mat-spinner>
-    <img [src]="comics.thumbnail?.urlImage" width="200px" />
+    <img class='image-thumn-detail'[src]="comics.thumbnail?.urlImage" width="200px" />
     <div class="urls">
       <ng-container *ngFor="let url of comics.urls">
         <a mat-button [href]="url.url" target="_blank">{{

@@ -6,6 +6,18 @@
   justify-content: center;
   align-items: center;
 
+  mat-card {
+    &:hover {
+      background-color: #e9e9e9;
+      .image-thumn-detail {
+            width: 210px;
+            transition: 0.3s;
+
+      }
+    }
+  }
+
+
   .close-details {
     display: flex;
     position: absolute;
