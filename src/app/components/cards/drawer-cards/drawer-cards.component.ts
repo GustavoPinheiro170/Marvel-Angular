@@ -14,7 +14,11 @@ export class DrawerCardsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private readonly _controlDrawers: ControlDrawersService
-  ) {}
+  ) {
+    this._controlDrawers
+    .awaitIdOpened()
+    .subscribe((ids: Array<number>) => (this._idOpened = ids));
+  }
 
   @Input() character: CharacterModel;
   @Output() controlDrawersOpened: EventEmitter<number> = new EventEmitter();
@@ -23,9 +27,7 @@ export class DrawerCardsComponent implements OnInit {
   public openDrawer: boolean = false;
 
   ngOnInit(): void {
-    this._controlDrawers
-      .awaitIdOpened()
-      .subscribe((ids: Array<number>) => (this._idOpened = ids));
+
   }
 
   capitalize(name: string) {

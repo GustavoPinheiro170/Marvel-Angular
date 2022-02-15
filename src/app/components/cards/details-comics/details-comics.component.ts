@@ -21,15 +21,21 @@ export class DetailsComicsComponent implements OnInit {
     public dialogRef: MatDialogRef<DetailsComicsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CharacterModel
   ) {
+    this.getDetails();
     this._loadingControl.observableLoading()
       .pipe(debounceTime(1000))
       .subscribe((value) => (this.setSpinner = value));
+
   }
-  public setSpinner: boolean | any = true;
+  public setSpinner: boolean = true;
   public emptyDetails: boolean = false;
   public comicDetails: Observable<CharacterModel[]> = new Observable();
 
   ngOnInit(): void {
+
+  }
+
+  getDetails() {
     this.comicDetails = this._getIdCharacter.getIdCharacter(this.data?.id).pipe(
       map((character: CharacterModel[]) => {
         if (!character.length) {

@@ -21,9 +21,8 @@ export class ContainerComponent implements OnInit {
     private readonly _getFilterCharacter: GetFilterCharacterService,
     private readonly _getCharacters: GetCharactersService,
     private readonly _coreService: CoreService,
-    private readonly _loadingControl: LoadingControlService,
-  ) {
-  }
+    private readonly _loadingControl: LoadingControlService
+  ) {}
 
   private _orderBy: string = OrderBy.Name;
   private _countPage: string;
@@ -41,9 +40,9 @@ export class ContainerComponent implements OnInit {
   }
 
   awaitLoading(): Subscription {
-    return this._loadingControl.observableLoading().subscribe(
-      (loading) => (this.loading = loading)
-    );
+    return this._loadingControl
+      .observableLoading()
+      .subscribe((loading) => (this.loading = loading));
   }
 
   getParametersResponse(): Subscription {

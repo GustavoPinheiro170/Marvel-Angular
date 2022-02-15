@@ -20,7 +20,6 @@ export class GetIdCharacterService {
   ) {}
 
   getIdCharacter(characterId: number): Observable<CharacterModel[]> {
-    this._loadingControl.setLoading(true);
     return this._httpClient
       .get<ParameterResponse>(CreateUrlComic.characterComidId(characterId))
       .pipe(
