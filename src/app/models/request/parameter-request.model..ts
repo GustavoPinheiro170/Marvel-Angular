@@ -3,9 +3,7 @@ import { OrderBy } from "src/assets/enums/orderBy.enum";
 export class ParamaterRequest {
 
   public orderBy?: OrderBy | String;
-  public ts?: number;
-  public apikey?: string;
-  public hash?: string;
+
   public limit?: string;
   public offset?: string;
   public nameStartsWith? : string
@@ -13,9 +11,6 @@ export class ParamaterRequest {
 
   constructor(parameters :Partial<ParamaterRequest>){
     this.orderBy = parameters?.orderBy ?? OrderBy.Name,
-    this.ts = parameters?.ts,
-    this.apikey = parameters?.apikey,
-    this.hash = parameters?.hash,
     this.limit = parameters?.limit ?? "12",
     this.offset = parameters?.offset ?? "0"
     this.nameStartsWith = parameters?.nameStartsWith

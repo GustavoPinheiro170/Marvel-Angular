@@ -1,5 +1,4 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ContainerComponent } from './container.component';
 import { FiltersComponent } from '../filters/filters.component';
@@ -18,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoadingModule } from 'src/assets/helpers/components/loading/loading.module';
 import { EmptyModule } from 'src/assets/helpers/components/empty/empty.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ContainerComponent, FiltersComponent, PaginatorComponent],

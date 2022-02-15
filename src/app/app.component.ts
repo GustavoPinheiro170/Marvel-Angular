@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { OrderBy } from 'src/assets/enums/orderBy.enum';
-import { GetCharactersService } from './services/characters/get-characters.service';
 
 @Component({
   selector: 'app-root',

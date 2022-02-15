@@ -1,5 +1,5 @@
-import { OrderBy } from 'src/assets/enums/orderBy.enum';
 import { ParameterResponse } from '../../models/dto/parameters.model';
+
 import { CharacterModel } from 'src/app/models/dto/character.model';
 import { MapperResult } from 'src/assets/helpers/mapper-result.helper';
 import { CoreService } from '../core.service';
@@ -12,36 +12,31 @@ import { Observable, take, shareReplay, catchError, map, finalize } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GetCharactersService {
+export class GetFilterCharacterService {
   constructor(
     private readonly _httpClient: HttpClient,
     private readonly _coreService: CoreService,
     private readonly _loadingControl: LoadingControlService
   ) {}
 
-  getCharacters(
-    orderBY?: OrderBy | string,
-    offset?: string,
-    limit?: string
-  ): Observable<CharacterModel[]> {
+
+  filterCharacter(name: string): Observable<CharacterModel[]> {
+
     const parameters = new HttpParams()
-      .set('offset', offset ?? 0)
-      .set('limit', limit ?? 12)
-      .set('orderBy', orderBY ?? OrderBy.Name);
+    .set('nameStartsWith', name ?? 0)
 
     this._loadingControl.setLoading(true);
     return this._httpClient
-      .get<ParameterResponse>(`${UrlApi.url}`, {params: parameters})
+      .get<ParameterResponse>(`${UrlApi.url}` , { params: parameters})
       .pipe(
         take(1),
         shareReplay(1),
-
+        catchError(this._coreService.handleError),
         map((response: ParameterResponse) => {
           this._coreService.$parameterResponse.next(response);
           return MapperResult.mapperResponse(response.data.results);
         }),
-        catchError(this._coreService.handleError),
-        finalize(() => this._loadingControl.setLoading(false))
+        finalize(() => this._loadingControl.setLoading(false)),
       );
   }
 }

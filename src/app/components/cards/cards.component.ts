@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { finalize, map, Observable, Subscription } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CharacterModel } from 'src/app/models/dto/character.model';
 
 @Component({

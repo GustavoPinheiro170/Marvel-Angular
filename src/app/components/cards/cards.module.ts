@@ -12,7 +12,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingModule } from 'src/assets/helpers/components/loading/loading.module';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DrawerCardsComponent } from './drawer-cards/drawer-cards.component';
 import { EmptyModule } from 'src/assets/helpers/components/empty/empty.module';
 
@@ -30,7 +30,7 @@ import { EmptyModule } from 'src/assets/helpers/components/empty/empty.module';
     LoadingModule,
     MatDialogModule,
     MatSidenavModule,
-    EmptyModule,
+    EmptyModule
   ],
   providers: [MatDrawer, MatSidenav],
 })

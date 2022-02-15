@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ControlDrawersService } from './control-drawers.service';
 
-xdescribe('ControlDrawersService', () => {
+describe('ControlDrawersService', () => {
   let service: ControlDrawersService;
 
   beforeEach(() => {
@@ -12,5 +12,12 @@ xdescribe('ControlDrawersService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('expected call toggleIdOpened', () => {
+    service.toggleIdOpened(120);
+    // service.observableOpened().subscribe((id) => {
+    //   expect(id).toEqual([120])
+    // })
   });
 });

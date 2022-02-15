@@ -3,9 +3,11 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { debounceTime, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 import { CharacterModel } from 'src/app/models/dto/character.model';
-import { GetCharactersService } from 'src/app/services/characters/get-characters.service';
+import { GetIdCharacterService } from 'src/app/services/characters/get-id-character.service';
+import { LoadingControlService } from 'src/app/services/utils/loading-control.service';
 
 @Component({
   selector: 'app-details-comics',
@@ -14,20 +16,21 @@ import { GetCharactersService } from 'src/app/services/characters/get-characters
 })
 export class DetailsComicsComponent implements OnInit {
   constructor(
-    private readonly _getCharacter: GetCharactersService,
+    private readonly _getIdCharacter: GetIdCharacterService,
+    private readonly _loadingControl: LoadingControlService,
     public dialogRef: MatDialogRef<DetailsComicsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CharacterModel
   ) {
-    this._getCharacter.$loading
+    this._loadingControl.observableLoading()
       .pipe(debounceTime(1000))
       .subscribe((value) => (this.setSpinner = value));
   }
-  public setSpinner: boolean = true;
+  public setSpinner: boolean | any = true;
   public emptyDetails: boolean = false;
   public comicDetails: Observable<CharacterModel[] | any> = new Observable();
 
   ngOnInit(): void {
-    this.comicDetails = this._getCharacter.getIdCharacter(this.data.id).pipe(
+    this.comicDetails = this._getIdCharacter.getIdCharacter(this.data?.id).pipe(
       map((character: CharacterModel[]) => {
         if (!character.length) {
           this.emptyDetails = true;

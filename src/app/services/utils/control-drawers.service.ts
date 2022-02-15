@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +8,7 @@ export class ControlDrawersService {
   constructor() {}
 
   private _othersIdsOpened: Array<number> = [];
-
-  $idOpened: BehaviorSubject<any> = new BehaviorSubject([]);
+  private _$idOpened: BehaviorSubject<Array<number>> = new BehaviorSubject([1]);
 
   toggleIdOpened(id: number) {
     if (this._othersIdsOpened.includes(id)) {
@@ -23,11 +22,12 @@ export class ControlDrawersService {
 
   private isSameId() {
     this._othersIdsOpened.splice(-this._othersIdsOpened.length);
-    this.$idOpened.next(this._othersIdsOpened);
+    this._$idOpened.next(this._othersIdsOpened);
   }
+
   private addIdOpened(id: number) {
     this._othersIdsOpened.push(id);
-    this.$idOpened.next(this._othersIdsOpened);
+    this._$idOpened.next(this._othersIdsOpened);
   }
 
   private deleteOtherOpened(id: number) {
@@ -35,6 +35,10 @@ export class ControlDrawersService {
       this._othersIdsOpened.splice(-this._othersIdsOpened.length);
       this._othersIdsOpened.push(id);
     }
-    this.$idOpened.next(this._othersIdsOpened);
+    this._$idOpened.next(this._othersIdsOpened);
+  }
+
+  public awaitIdOpened() : Observable<Array<number>> {
+    return this._$idOpened.asObservable();
   }
 }

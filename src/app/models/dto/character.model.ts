@@ -20,11 +20,11 @@ export class CharacterModel {
 
   constructor(results?: CharacterModel){
     this.id = results?.id ?? 0
-    this.description = results?.description
-    this.modified = results?.modified
+    this.description = results?.description ?? ""
+    this.modified = results?.modified ?? ""
     this.name = results?.name ?? ""
-    this.resourceURI = results?.resourceURI
-    this.urls =  results?.urls;
+    this.resourceURI = results?.resourceURI ?? ""
+    this.urls =  results?.urls?? [new UrlsModel()];
     this.thumbnail = new ThumbnailModel(results?.thumbnail)
   }
 

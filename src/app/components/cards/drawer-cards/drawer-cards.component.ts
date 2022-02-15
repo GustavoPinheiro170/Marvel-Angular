@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { CharacterModel } from 'src/app/models/dto/character.model';
 import { UrlsModel } from 'src/app/models/dto/urls.model';
 import { ControlDrawersService } from 'src/app/services/utils/control-drawers.service';
@@ -14,19 +13,20 @@ import { DetailsComicsComponent } from '../details-comics/details-comics.compone
 export class DrawerCardsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
-
     private readonly _controlDrawers: ControlDrawersService
-  ) {
-    this._controlDrawers.$idOpened.subscribe((id) => (this._idOpened = id));
-  }
+  ) {}
 
   @Input() character: CharacterModel;
   @Output() controlDrawersOpened: EventEmitter<number> = new EventEmitter();
 
-  private _idOpened: Array<number>;
+  public _idOpened: Array<number> = [];
   public openDrawer: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._controlDrawers
+      .awaitIdOpened()
+      .subscribe((ids: Array<number>) => (this._idOpened = ids));
+  }
 
   capitalize(name: string) {
     return name.charAt(0).toUpperCase() + name.substr(1);
@@ -45,8 +45,8 @@ export class DrawerCardsComponent implements OnInit {
     this._controlDrawers.toggleIdOpened(id);
   }
 
-  toggleDrawers(id: number): boolean {
-    return this._idOpened.includes(id);
+  toggleDrawers(id?: number): boolean {
+    return this._idOpened.includes(id ?? 0);
   }
 
   trackByCards(_: number, cards: UrlsModel) {

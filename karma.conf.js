@@ -3,6 +3,7 @@
 
 module.exports = function (config) {
   config.set({
+
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
@@ -13,7 +14,9 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
+
       jasmine: {
+        random: false,
         // you can add configuration options for Jasmine here
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
         // for example, you can disable the random execution with `random: false`
@@ -25,7 +28,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/marvel'),
+      dir: require('path').join(__dirname, './coverage/angular-heroes'),
       subdir: '.',
       reporters: [
         { type: 'html' },

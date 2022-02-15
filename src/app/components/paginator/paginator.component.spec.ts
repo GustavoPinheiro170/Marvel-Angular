@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginatorComponent } from './paginator.component';
 
-xdescribe('PaginatorComponent', () => {
+describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
 
@@ -21,5 +21,10 @@ xdescribe('PaginatorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create', () => {
+    component.handlerPages("Hulk");
+    expect(component.handlerPage).toBeDefined();
   });
 });

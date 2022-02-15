@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { OrderBy } from 'src/assets/enums/orderBy.enum';
 
 import { FiltersComponent } from './filters.component';
 
-xdescribe('FiltersComponent', () => {
+describe('FiltersComponent', () => {
   let component: FiltersComponent;
   let fixture: ComponentFixture<FiltersComponent>;
 
@@ -19,7 +20,13 @@ xdescribe('FiltersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should orderSelected', () => {
+    component.orderByCharacters(OrderBy.Name);
+    expect(component.orderSelected).toBeDefined();
+  });
+
+  it('should filterCharacters', () => {
+    component.filterCharacters("Hulk");
+    expect(component.filterCharacter).toBeDefined();
   });
 });

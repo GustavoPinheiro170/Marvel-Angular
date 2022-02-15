@@ -10,7 +10,6 @@
   border-bottom: 2px solid #ed1d24;
   transition: 0.3s;
 
-
   &:hover {
     &:after {
       content: "";
@@ -47,4 +46,8 @@
   }
 }
 
-
+@media only screen and (max-width: 900px) {
+  .container-cards {
+    min-width: 90%;
+  }
+}

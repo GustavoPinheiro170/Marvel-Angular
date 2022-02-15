@@ -1,8 +1,9 @@
+
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { ParameterResponse } from '../models/dto/parameters.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class CoreService {
 
   constructor(private _snackbar: MatSnackBar) { }
 
-  handleError = (error: HttpErrorResponse) => {
+  public $parameterResponse: BehaviorSubject<ParameterResponse> = new BehaviorSubject(new ParameterResponse());
+
+  handleError(error: HttpErrorResponse) : Observable<never> {
     if (error.error instanceof ErrorEvent) {
       throw error;
     } else {
@@ -19,4 +22,8 @@ export class CoreService {
     }
     return throwError(error);
   };
+
+  getParametersResponse(): Observable<ParameterResponse> {
+    return this.$parameterResponse.asObservable();
+  }
 }

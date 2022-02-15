@@ -1,46 +1,36 @@
-import { OrderBy } from 'src/assets/enums/orderBy.enum';
+
 import { ParameterResponse } from '../../models/dto/parameters.model';
+
 import { CharacterModel } from 'src/app/models/dto/character.model';
 import { MapperResult } from 'src/assets/helpers/mapper-result.helper';
 import { CoreService } from '../core.service';
+import { CreateUrlComic } from 'src/assets/helpers/create-comics-urls';
 import { LoadingControlService } from '../utils/loading-control.service';
-import { UrlApi } from 'src/assets/enums/url.enum';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable, take, shareReplay, catchError, map, finalize } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetCharactersService {
+export class GetIdCharacterService {
   constructor(
     private readonly _httpClient: HttpClient,
     private readonly _coreService: CoreService,
     private readonly _loadingControl: LoadingControlService
   ) {}
 
-  getCharacters(
-    orderBY?: OrderBy | string,
-    offset?: string,
-    limit?: string
-  ): Observable<CharacterModel[]> {
-    const parameters = new HttpParams()
-      .set('offset', offset ?? 0)
-      .set('limit', limit ?? 12)
-      .set('orderBy', orderBY ?? OrderBy.Name);
-
+  getIdCharacter(characterId: number): Observable<CharacterModel[]> {
     this._loadingControl.setLoading(true);
     return this._httpClient
-      .get<ParameterResponse>(`${UrlApi.url}`, {params: parameters})
+      .get<ParameterResponse>(CreateUrlComic.characterComidId(characterId))
       .pipe(
         take(1),
         shareReplay(1),
-
-        map((response: ParameterResponse) => {
-          this._coreService.$parameterResponse.next(response);
-          return MapperResult.mapperResponse(response.data.results);
-        }),
         catchError(this._coreService.handleError),
+        map((response: ParameterResponse) =>
+          MapperResult.mapperResponse(response.data.results)
+        ),
         finalize(() => this._loadingControl.setLoading(false))
       );
   }
