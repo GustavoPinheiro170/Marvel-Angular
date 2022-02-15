@@ -27,7 +27,7 @@ export class DetailsComicsComponent implements OnInit {
   }
   public setSpinner: boolean | any = true;
   public emptyDetails: boolean = false;
-  public comicDetails: Observable<CharacterModel[] | any> = new Observable();
+  public comicDetails: Observable<CharacterModel[]> = new Observable();
 
   ngOnInit(): void {
     this.comicDetails = this._getIdCharacter.getIdCharacter(this.data?.id).pipe(

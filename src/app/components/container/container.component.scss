@@ -13,6 +13,25 @@
   flex-wrap: wrap;
   background-color: white;
 
+  .top-area {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .title {
+      font-family: Roboto;
+      font-size: 50px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.61;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ed1d24;
+    }
+  }
+
   ::ng-deep .mat-drawer-container {
     position: absolute;
     z-index: 1;
@@ -36,22 +55,4 @@
     overflow: hidden !important;
   }
 
-  .top-area {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    .title {
-      font-family: Roboto;
-      font-size: 50px;
-      font-weight: 300;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.61;
-      letter-spacing: normal;
-      text-align: left;
-      color: #ed1d24;
-    }
-  }
 }

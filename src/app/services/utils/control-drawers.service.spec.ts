@@ -16,8 +16,5 @@ describe('ControlDrawersService', () => {
 
   it('expected call toggleIdOpened', () => {
     service.toggleIdOpened(120);
-    // service.observableOpened().subscribe((id) => {
-    //   expect(id).toEqual([120])
-    // })
   });
 });

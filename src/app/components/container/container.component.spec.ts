@@ -1,4 +1,3 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
@@ -9,7 +8,7 @@ import {
 } from '@angular/core/testing';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { Observable, of } from 'rxjs';
+import {  of } from 'rxjs';
 import { CharacterModel } from 'src/app/models/dto/character.model';
 import { DataModel } from 'src/app/models/dto/data.model';
 import { Paginator } from 'src/app/models/dto/paginator.model';

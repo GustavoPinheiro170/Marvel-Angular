@@ -41,4 +41,8 @@ describe('DetailsComicsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should capitalize', () => {
+    expect( component.capitalize("name")).toEqual('Name');
+  });
 });

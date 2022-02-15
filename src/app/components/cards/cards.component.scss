@@ -10,21 +10,6 @@
   border-bottom: 2px solid #ed1d24;
   transition: 0.3s;
 
-  &:hover {
-    &:after {
-      content: "";
-      position: absolute;
-      transform: rotate(180deg);
-      left: 0;
-      right: 0;
-      width: 100%;
-      border-radius: 10px 10px 0px 0px;
-      bottom: -1px;
-      background-color: #ed1d24;
-      animation: animeUp 0.2s forwards;
-    }
-  }
-
   .card-characters {
     display: flex;
     flex-direction: column;
@@ -42,6 +27,20 @@
       max-height: 100%;
       margin-bottom: 15px;
       border-radius: 10px;
+    }
+  }
+  &:hover {
+    &:after {
+      content: "";
+      position: absolute;
+      transform: rotate(180deg);
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-radius: 10px 10px 0px 0px;
+      bottom: -1px;
+      background-color: #ed1d24;
+      animation: animeUp 0.2s forwards;
     }
   }
 }

@@ -1,14 +1,13 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, take, shareReplay, catchError, map, finalize } from 'rxjs';
 
 import { ParameterResponse } from '../../models/dto/parameters.model';
-
 import { CharacterModel } from 'src/app/models/dto/character.model';
 import { MapperResult } from 'src/assets/helpers/mapper-result.helper';
 import { CoreService } from '../core.service';
 import { CreateUrlComic } from 'src/assets/helpers/create-comics-urls';
 import { LoadingControlService } from '../utils/loading-control.service';
-import { Observable, take, shareReplay, catchError, map, finalize } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',

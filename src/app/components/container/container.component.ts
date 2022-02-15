@@ -26,7 +26,7 @@ export class ContainerComponent implements OnInit {
   }
 
   private _orderBy: string = OrderBy.Name;
-  private _countPage: string = '0';
+  private _countPage: string;
 
   loading: boolean = false;
   totalPages: number = 0;

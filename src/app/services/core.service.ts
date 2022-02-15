@@ -1,8 +1,8 @@
-
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ParameterResponse } from '../models/dto/parameters.model';
 
 @Injectable({

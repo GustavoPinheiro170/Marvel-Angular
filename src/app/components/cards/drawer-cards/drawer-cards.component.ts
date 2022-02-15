@@ -19,7 +19,7 @@ export class DrawerCardsComponent implements OnInit {
   @Input() character: CharacterModel;
   @Output() controlDrawersOpened: EventEmitter<number> = new EventEmitter();
 
-  public _idOpened: Array<number> = [];
+  private _idOpened: Array<number> = [];
   public openDrawer: boolean = false;
 
   ngOnInit(): void {
